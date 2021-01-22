@@ -7,10 +7,13 @@ const Body = Matter.Body;
 var ground;
 var box1,box2,box3;
 var paper;
-
+var dustbin;
+//function preload(){
+  
+//}
 
 function setup() {
-	createCanvas(1800, 700);
+	createCanvas(800, 700);
 
 
 	engine = Engine.create();
@@ -18,39 +21,49 @@ function setup() {
 
   //Create the Bodies Here.
   Engine.run(engine);
+  paper = new Paper(100,650,50);
+	ground = new Ground(400,680,800,20);
+ 
+ 
+   box1 = new Box(550,570);
+  box2 = new Dustbin(700,565,10,200)
+  // boxPosition=width/2-100
+ 	//boxY=610;
 
-	ground = new Ground(600,600,1200,20);
 
-	
-  box1 = new Box(545,540,10,70);
-  box2 = new Box(590,580,80,10);
-  box3 = new Box(635,540,10,70);
+ //	boxleftSprite=createSprite(boxPosition, boxY, 20,100);
+ //	boxleftSprite.shapeColor=color(255,0,0);
 
-  paper = new Paper(100,300,10);
+ //	boxLeftBody = Bodies.rectangle(boxPosition+20, boxY, 20,100 , {isStatic:true} );
+ //	World.add(world, boxLeftBody);
+ // box3 = new Box(670,620,20,100);
+ // paper = new Paper();
 
 }
 
 
 function draw() {
-  rectMode(CENTER);
-  background(0);
+ // imageMode(CENTER);
+  background(211,211,211);
   Engine.update(engine); 
-  ground.display();
 
-  box1.display();
-  box2.display();
-  box3.display();
   paper.display();
 
-  keyPressed();
+  ground.display();
+//boxLeftBody.display()
+  box1.display();
+ box2.display();
+ //dustbin.display
+  //box3.display();
+ 
+
+ //keyPressed();
 }
 
 function keyPressed(){
   if(keyCode === UP_ARROW){
-    Matter.Body.applyForce(paper.body,paper.body.position,{
-      x:85,
-      y:-85
-    })
+    Matter.Body.applyForce(paper.body,paper.body.position,{x:300,y:-500})
+     
   }
 }
 

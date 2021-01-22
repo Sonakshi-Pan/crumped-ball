@@ -9,16 +9,16 @@ class Paper {
           }
           this.radius=radius;
         
-          
+          this.image = loadImage("paper.png");
           this.body = Bodies.circle(x,y,radius,options);
           World.add(world, this.body)
     }
     display(){
         var pos=this.body.position
         push(); 
-       ellipseMode(RADIUS);
-        fill (255);
-        ellipse(this.body.position.x,this.body.position.y,this.radius,this.radius);
+        imageMode(RADIUS);
+        fill ("yellow");
+        image(this.image,this.body.position.x,this.body.position.y,this.radius,this.radius);
         pop() ;  
     }
 }
